@@ -27,13 +27,11 @@ public class GameOfLifeTest {
 	}
 
 	@Test
-	public void testIterations() throws Exception {
+	public void testRowConfigurations() throws Exception {
 		assertNextIteration(LIVING_CELL, DEAD_CELL);
 		assertNextIteration("xxx", ".x.");
 		assertNextIteration("xxxx", ".xx.");
 		assertNextIteration("xxx.xxx", ".x...x.");
-		assertNextIteration("... xxx ...", ".x. .x. .x.");
-		assertNextIteration(".x. .x. .x.", "... xxx ...");
 	}
 
 	@Test
@@ -43,6 +41,26 @@ public class GameOfLifeTest {
 		final String beehive = ".xx. x..x .xx.";
 		assertNextIteration(beehive, beehive);
 	}
+	
+	@Test
+	public void testOscillators() throws Exception {
+		final String blinker1 = "... xxx ...";
+		final String blinker2 = ".x. .x. .x.";
+		assertNextIteration(blinker1, blinker2);
+		assertNextIteration(blinker2, blinker1);		
+	}
+	
+	@Test
+	public void testGlider() throws Exception {
+		final String glider1 = "..x. x.x. .xx. ....";
+		final String glider2 = ".x.. ..xx .xx. ....";
+		final String glider3 = "..x. ...x .xxx ....";
+		final String glider4 = ".... .x.x ..xx ..x.";
+		assertNextIteration(glider1, glider2);
+		assertNextIteration(glider2, glider3);
+		assertNextIteration(glider3, glider4);
+	}
+	
 	private String nextIteration(String iteration) {
 		String result = "";
 		if (iteration == null) 
@@ -60,7 +78,7 @@ public class GameOfLifeTest {
 	public boolean cellWillLive(String[] lines, int x, int y) {
 		int neighbours = numberOfLiveNeighbours(lines, x, y);
 		if (cellIsAlive(lines[y], x))
-			return neighbours > 2;		
+			return neighbours > 2 && neighbours < 5;		
 		else
 			return neighbours == 3;
 	}
