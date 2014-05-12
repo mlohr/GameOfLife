@@ -32,11 +32,17 @@ public class GameOfLifeTest {
 		assertNextIteration("xxx", ".x.");
 		assertNextIteration("xxxx", ".xx.");
 		assertNextIteration("xxx.xxx", ".x...x.");
-		assertNextIteration("xx xx", "xx xx");
 		assertNextIteration("... xxx ...", ".x. .x. .x.");
 		assertNextIteration(".x. .x. .x.", "... xxx ...");
 	}
-	
+
+	@Test
+	public void testStillLifes() throws Exception {
+		final String block = "xx xx";
+		assertNextIteration(block, block);
+		final String beehive = ".xx. x..x .xx.";
+		assertNextIteration(beehive, beehive);
+	}
 	private String nextIteration(String iteration) {
 		String result = "";
 		if (iteration == null) 
