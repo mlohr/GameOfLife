@@ -7,7 +7,7 @@ import org.junit.Test;
 public class GameOfLifeTest {
 	
 	private static final String NEW_LINE = " ";
-	private static final String ALIVE_CELL = "x";
+	private static final String LIVING_CELL = "x";
 	private static final String DEAD_CELL = ".";
 	
 	public void assertNextIteration(String current, String expected) {
@@ -28,7 +28,7 @@ public class GameOfLifeTest {
 
 	@Test
 	public void testIterations() throws Exception {
-		assertNextIteration(ALIVE_CELL, DEAD_CELL);
+		assertNextIteration(LIVING_CELL, DEAD_CELL);
 		assertNextIteration("xxx", ".x.");
 		assertNextIteration("xxxx", ".xx.");
 		assertNextIteration("xxx.xxx", ".x...x.");
@@ -44,7 +44,7 @@ public class GameOfLifeTest {
 		final String[] lines = iteration.split(NEW_LINE);
 		for (int y=0; y < lines.length; y++)	{			
 			for(int x=0; x < lines[y].length(); x++) {
-				result += cellWillLive(lines, x, y) ? ALIVE_CELL : DEAD_CELL;
+				result += cellWillLive(lines, x, y) ? LIVING_CELL : DEAD_CELL;
 			}
 			result += NEW_LINE;
 		}
@@ -77,7 +77,7 @@ public class GameOfLifeTest {
 	}
 
 	public boolean cellIsAlive(String field, int i) {
-		return field.substring(i, i+1).equals(ALIVE_CELL);
+		return field.substring(i, i+1).equals(LIVING_CELL);
 	}
 
 }
