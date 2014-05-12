@@ -84,16 +84,16 @@ public class GameOfLifeTest {
 	}
 
 	public int numberOfLivingNeighbours(String[] lines, int x, int y) {
-		int neighbours = countLiveNeighboursInRow(lines, x, y);
+		int neighbours = countLivingNeighboursInRow(lines, x, y);
 		if (y>0)
-			neighbours += countLiveNeighboursInRow(lines, x, y-1);
+			neighbours += countLivingNeighboursInRow(lines, x, y-1);
 		if (y<lines.length-1) {
-			neighbours += countLiveNeighboursInRow(lines, x, y+1);
+			neighbours += countLivingNeighboursInRow(lines, x, y+1);
 		}
 		return neighbours;
 	}
 
-	public int countLiveNeighboursInRow(String[] lines, int x, int y) {
+	public int countLivingNeighboursInRow(String[] lines, int x, int y) {
 		int neighbours = cellIsAlive(lines[y], x) ? 1 : 0;
 		neighbours += x>0 && cellIsAlive(lines[y], x-1) ? 1 : 0;
 		neighbours += x<lines[y].length()-1 && cellIsAlive(lines[y], x+1) ? 1 : 0;
