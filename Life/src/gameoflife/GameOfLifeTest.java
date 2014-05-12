@@ -1,3 +1,7 @@
+/**
+ * @author: Michel Löhr
+ * 
+ */
 package gameoflife;
 
 import static org.junit.Assert.*;
