@@ -1,5 +1,5 @@
-GameOfLife
-==========
+Game of Life
+============
 
 Testdriven Development (TDD) example of Conway's game of life in Java.
 
@@ -11,5 +11,6 @@ Preconditions:
   3. Any live cell with more than three live neighbours dies, as if by overcrowding.
   4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-  The field is represented as single string using a space as newline seperator. The fieldsize is fixed (can not grow).
+  The field is represented as single string using a space as newline seperator. 
+  The fieldsize is fixed (can not grow).
   
