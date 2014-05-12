@@ -24,4 +24,5 @@ Using the TTD approach as advocated by Robert C. Martin (aka. uncle Bob) the mai
 			return neighbours > 2 && neighbours < 5;		
 		else
 			return neighbours == 3;
-	}```			
+	}
+```			
