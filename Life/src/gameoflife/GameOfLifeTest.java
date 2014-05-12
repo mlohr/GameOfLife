@@ -76,14 +76,14 @@ public class GameOfLifeTest {
 	}
 
 	public boolean cellWillLive(String[] lines, int x, int y) {
-		int neighbours = numberOfLiveNeighbours(lines, x, y);
+		int neighbours = numberOfLivingNeighbours(lines, x, y);
 		if (cellIsAlive(lines[y], x))
 			return neighbours > 2 && neighbours < 5;		
 		else
 			return neighbours == 3;
 	}
 
-	public int numberOfLiveNeighbours(String[] lines, int x, int y) {
+	public int numberOfLivingNeighbours(String[] lines, int x, int y) {
 		int neighbours = countLiveNeighboursInRow(lines, x, y);
 		if (y>0)
 			neighbours += countLiveNeighboursInRow(lines, x, y-1);
